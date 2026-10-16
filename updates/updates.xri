@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xri version="1.0">
   <description>
-    <p>ImageIntegration XISF Packager for PixInsight.</p>
+    <p>ImageIntegration XISF Packager is a PixInsight script for conveniently saving related outputs from manual ImageIntegration and Drizzle Integration workflows.</p>
   </description>
   <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
     <package fileName="imageintegration-xisf-packager-1.0.0.zip" sha1="446cda00ef65481d5235329f8281f6c3e9fd68bb" type="script" releaseDate="20261017">
       <title>ImageIntegration XISF Packager 1.0.0</title>
       <description>
-        <p>Package standard ImageIntegration outputs or Drizzle Integration outputs into one multi-image XISF file.</p>
+        <p>ImageIntegration XISF Packager helps you save the output images from manual integration in one multi-image XISF file, providing a convenient workflow similar to WBPP's consolidated MasterLight and rejection-map output.</p>
+        <p><b>Standard ImageIntegration:</b> packages the Integration image, Rejection Low map, and Rejection High map together in one XISF file, so you do not need to save each output separately.</p>
+        <p><b>Drizzle Integration:</b> packages the Drizzle Integration image and Drizzle Weights image together in one XISF file.</p>
+        <p><b>Automatic output matching:</b> choose Standard ImageIntegration or Drizzle Integration. The script attempts to identify the corresponding open output windows, even when outputs from both workflows are open at the same time. Please check the suggested windows before saving, especially when multiple windows have identical IDs.</p>
+        <p><b>Non-destructive:</b> the original image windows are not modified. Related outputs remain separate images inside the XISF file and can be opened and processed independently.</p>
       </description>
     </package>
   </platform>
