@@ -5,7 +5,7 @@ A PixInsight script that packages the output images from manual **ImageIntegrati
 ## Features
 
 - **Standard ImageIntegration:** saves `Integration`, `Rejection Low`, and `Rejection High` together in one XISF file.
-- **Drizzle Integration:** saves the Drizzle integration image and `Drizzle Weights` together in one XISF file.
+- **Drizzle Integration:** saves the `Drizzle Integration` image and `Drizzle Weights` together in one XISF file.
 - **Separate workflow detection:** if both standard and Drizzle outputs are open, the script offers the matching set for the selected workflow. Check the suggested windows before saving, especially if different windows have identical IDs.
 - **Non-destructive:** the source image windows are not modified.
 
