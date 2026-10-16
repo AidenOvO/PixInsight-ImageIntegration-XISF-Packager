@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xri version="1.0">
+  <description>
+    <p>ImageIntegration XISF Packager for PixInsight.</p>
+  </description>
+  <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
+    <package fileName="imageintegration-xisf-packager-1.0.0.zip" sha1="446cda00ef65481d5235329f8281f6c3e9fd68bb" type="script" releaseDate="20261017">
+      <title>ImageIntegration XISF Packager 1.0.0</title>
+      <description>
+        <p>Package standard ImageIntegration outputs or Drizzle Integration outputs into one multi-image XISF file.</p>
+      </description>
+    </package>
+  </platform>
+</xri>
