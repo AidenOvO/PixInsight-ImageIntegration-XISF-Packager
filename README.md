@@ -7,6 +7,7 @@ A PixInsight script that packages the output images from manual **ImageIntegrati
 - **Standard ImageIntegration:** saves `Integration`, `Rejection Low`, and `Rejection High` together in one XISF file.
 - **Drizzle Integration:** saves the `Drizzle Integration` image and `Drizzle Weights` together in one XISF file.
 - **Separate workflow detection:** if both standard and Drizzle outputs are open, the script offers the matching set for the selected workflow. Check the suggested windows before saving, especially if different windows have identical IDs.
+- **FITS Header preservation:** copies the FITS keywords from each source image window into its corresponding image entry in the output XISF file.
 - **Non-destructive:** the source image windows are not modified.
 
 ## Install through PixInsight's update system
@@ -34,10 +35,14 @@ Download [`PackImageIntegrationXISF.js`](PackImageIntegrationXISF.js). In PixIns
 3. Select **Standard ImageIntegration** or **Drizzle Integration**.
 4. Verify the suggested output windows, adjust them if needed, and choose the destination XISF filename.
 
-## Current release
+## Changelog
 
-Version **1.0.0** — initial public repository package.
+### 1.0.1
+- Fixed loss of FITS Header keywords during packaging. Each output image now receives the keywords from its corresponding source window.
+
+### 1.0.0
+- Initial release with Standard ImageIntegration and Drizzle Integration packaging modes.
 
 ## 中文说明
 
-本脚本为 PixInsight 手动执行的 ImageIntegration 和 Drizzle Integration 提供多图集中保存功能：标准叠加可将 Integration、Rejection Low、Rejection High 保存到同一个 XISF；Drizzle 模式可将 Drizzle Integration 和 Drizzle Weights 保存到同一个 XISF。它旨在提供类似 WBPP 集中管理 MasterLight 与拒绝图的便利。两种流程分别选择，保存前请核对自动预选的窗口。
+本脚本为 PixInsight 手动执行的 ImageIntegration 和 Drizzle Integration 提供多图集中保存功能：标准叠加可将 Integration、Rejection Low、Rejection High 保存到同一个 XISF；Drizzle 模式可将 Drizzle Integration 和 Drizzle Weights 保存到同一个 XISF。**1.0.1 版本还会保留每张源图像对应的 FITS Header Keywords。** 它旨在提供类似 WBPP 集中管理 MasterLight 与拒绝图的便利。两种流程分别选择，保存前请核对自动预选的窗口。
