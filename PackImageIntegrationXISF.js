@@ -1,7 +1,8 @@
 #feature-id Utilities > ImageIntegration XISF Packager
-#feature-info Saves the three standard ImageIntegration outputs or the two Drizzle Integration outputs into one multi-image XISF file.
+#feature-info Packages ImageIntegration and Drizzle outputs into one XISF file while preserving each source image FITS keyword header.
 /*
  * PackImageIntegrationXISF.js
+ * Version 1.0.1
  *
  * Packs outputs from one selected workflow into a multi-image XISF.
  * Standard ImageIntegration: integration + rejection_low + rejection_high
@@ -9,6 +10,7 @@
  *
  * If outputs from both workflows are open, each mode auto-detects and selects
  * only the matching set. Review the suggested windows before saving.
+ * FITS keywords from each source ImageWindow are copied to its XISF image.
  * The source windows are not modified.
  */
 #include <pjsr/Sizer.jsh>
@@ -606,6 +608,17 @@ function packImages( selected, outputIds, imageTypes, outputPath, mode )
             fail( "Failed to set XISF write options for image: " + outputIds[n] );
          if ( !writer.setImageId( outputIds[n] ) )
             fail( "Failed to set internal XISF image ID: " + outputIds[n] );
+
+         // Preserve the FITS Header of this source window in the matching XISF image.
+         // ImageWindow.keywords is an array of FITSKeyword objects. Assign it to the
+         // FileFormatInstance before writing each image so every XISF image receives
+         // its own header instead of losing the metadata during pixel-only writing.
+         var sourceKeywords = selected[n].keywords;
+         if ( sourceKeywords == null )
+            sourceKeywords = [];
+         writer.keywords = sourceKeywords;
+         console.writeln( "FITS keywords for " + outputIds[n] + ": " + sourceKeywords.length );
+
          if ( !writer.writeImage( image ) )
             fail( "Failed to write image: " + outputIds[n] );
          console.writeln( "Wrote image: " + outputIds[n] );
